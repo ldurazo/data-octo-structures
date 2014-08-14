@@ -46,7 +46,6 @@ public class LinkedList<Item> {
             holder.item = item;
             //the holder sets after the head. so the head can take the value of the holder and become the new head
             holder.next = head;
-            head.previous = holder;
             head = holder;
             counter++;
             return;
@@ -60,7 +59,6 @@ public class LinkedList<Item> {
         // we now have holder exactly on the desired index value, then we create the new node
         Node<Item> node = new Node<Item>();
         node.item = item;
-        //holder hides itself after giving the new node where to point at.
         node.next = holder.next;
         holder.next = node;
         counter++;
@@ -103,10 +101,8 @@ public class LinkedList<Item> {
                 return item;
             } else if (index == size()) {
                 //if they want the last one added, the same.
-                Item item = back.item;
-                back = back.previous;
                 counter--;
-                return item;
+                return back.item;
             }
             //if they want to give us some headaches, we search for the index desired and put the holder in
             // the desired position, then we create a new node a make a transaction to nulify that node.
@@ -131,13 +127,11 @@ public class LinkedList<Item> {
         //the head has the item they desire? burn it.
         if(head.item.equals(item)){
             head = head.next;
-            head.previous = null;
             counter--;
             return item;
         }
         //the tails does? burn it then.
         else if(back.item.equals(item)){
-            back = back.previous;
             back.next = null;
             counter--;
             return item;
