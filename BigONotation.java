@@ -114,7 +114,29 @@ public class BigONotation {
     //O(n Log n)
     //this is the same as:
     //n Log n = Log n! = Logn + Log (n-1) + ... + Log(1)
-    public void quickSort(int low, int high) {
-
+    public void quicksort(int low, int high) {
+        int i = low, j = high;
+        //Pivot right in the middle
+        int pivot = theArray[low + (high-low)/2];
+        while (i <= j) {
+            while (theArray[i] < pivot) {
+                i++;
+            }
+            while (theArray[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                int temp = theArray[i];
+                theArray[i] = theArray[j];
+                theArray[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        // Recursion
+        if (low < j)
+            quicksort(low, j);
+        if (i < high)
+            quicksort(i, high);
     }
 }
