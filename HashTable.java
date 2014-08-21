@@ -2,7 +2,7 @@ package com.company;
 
 public class HashTable<Item> {
 
-    private final int tableSize = 5;
+    private final int tableSize = 12;
     private int numElements = 0;
     private Object[] table;
 
@@ -17,10 +17,6 @@ public class HashTable<Item> {
         char[] characters = inputString.toCharArray();
         for (int i = 0; i < characters.length; i++) {
             char currentChar = characters[i];
-            if (currentChar == 'a' || currentChar == 'b' || currentChar == 'c' ||
-                    currentChar == 'd' || currentChar == 'e' || currentChar == 'f') {
-                result += Integer.parseInt("" + currentChar, 16);
-            }
             int j = (int) currentChar;
             result += j;
         }
